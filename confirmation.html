@@ -10,21 +10,6 @@
   </head>
   <body>
 
-    <style>
-      .card-img-top {
-          width: 100%;
-          height: 15vw;
-          object-fit: cover;
-      }
-      .card-deck {
-        margin: 10px;
-      }
-      .card {
-        max-width: 30%;
-        min-width: 30%;
-      }
-    </style>
-    
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -34,8 +19,8 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.html?category=books"">Books</a>
@@ -53,66 +38,32 @@
         </div>
       </nav>
       
-      <h3 id="category_header">Best Sellers</h3>
-      
-      <!-- Product Cards -->
-      <div class="card-deck" id="product_card_deck">
-        <!-- Product Cards Will Be Loaded In Via JavaScript See Below -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="py-3 text-center">Thank You</h1>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+            </div>
+          </div>
+        <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-center">Your order is on its way.</h3>
+            </div>
+          </div>
       </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-     <!-- Load the Catalog -->
-     <script src ="./catalog.js"></script>
 
-    <script>
-
-      // setter method for the category header
-      function setHeader(category){
-        document.getElementById("category_header").innerHTML = category[0].toUpperCase() + category.substring(1);
-      }
-
-      // called to load a category of product cards into the card deck
-      function loadCategory(category){
-        Object.keys(category).forEach(key => { 
-          let card = `
-            <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="${category[key].image}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">${category[key].name}</h5>
-                <p class="card-text">${category[key].description}</p>
-                <a href="#" id="#" class="btn btn-primary" onclick="addToCart(${key})" >Add to Cart</a>
-              </div>
-            </div>`
-          document.getElementById("product_card_deck").innerHTML += card;
-        });
-      }
-
-      // add item to cart 
-      function addToCart(item){
-        
-      }
-
-      // find out 
-      var current_category = window.location.href.split('=').pop();
-
-      console.log(current_category);
-
-      // load category
-      if (catalog.hasOwnProperty(current_category)){
-        console.log("yes");
-
-        setHeader(current_category);
-        loadCategory(catalog[current_category]);
-      }
-      else{ // we are on the homepage, load best sellers
-        loadCategory(best_sellers);
-      }
-
-    </script>
   </body>
 </html>
