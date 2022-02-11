@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Review Order</title>
   </head>
   <body>
     <div class="container">
@@ -25,12 +25,12 @@
               <h4>Shipping Address</h4>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><b>Name:</b> John Smith</li>
-              <li class="list-group-item"><b>Address:</b> Main Street 123</li>
-              <li class="list-group-item"><b>Address 2:</b></li>
-              <li class="list-group-item"><b>Country:</b> United States</li>
-              <li class="list-group-item"><b>State:</b> Virginia</li>
-              <li class="list-group-item"><b>Zipcode:</b> 12345</li>
+              <li class="list-group-item" id="name"><b>Name:</b> John Smith</li>
+              <li class="list-group-item" id="address"><b>Address:</b> Main Street 123</li>
+              <li class="list-group-item" id="address2"><b>Address 2:</b></li>
+              <li class="list-group-item" id="country"><b>Country:</b> United States</li>
+              <li class="list-group-item" id="state"><b>State:</b> Virginia</li>
+              <li class="list-group-item" id="zipcode"><b>Zipcode:</b> 12345</li>
             </ul>
           </div>
         </div>
@@ -41,10 +41,10 @@
               <h4>Payment Information</h4>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><b>Name On Card:</b> John Smith</li>
-              <li class="list-group-item"><b>Credit Card Number:</b> 1234 1234 1234 1234</li>
-              <li class="list-group-item"><b>Expiration Date:</b> 12/08/20</li>
-              <li class="list-group-item"><b>CVV:</b> 111</li>
+              <li class="list-group-item" id="cardName"><b>Name On Card:</b> John Smith</li>
+              <li class="list-group-item" id="cardNumber"><b>Credit Card Number:</b> 1234 1234 1234 1234</li>
+              <li class="list-group-item" id="expiration"><b>Expiration Date:</b> 12/08/20</li>
+              <li class="list-group-item" id="cvv"><b>CVV:</b> 111</li>
             </ul>
           </div>
         </div>
@@ -64,8 +64,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script>
-      console.log(window.localStorage.getItem("firstName"));
-      console.log(window.localStorage.getItem("lastName"));
+      // load shipping info 
+      document.getElementById("name").innerHTML = "<b>Name:</b> " + window.localStorage.getItem("name");
+      document.getElementById("address").innerHTML = "<b>Address:</b> " + window.localStorage.getItem("address");
+      document.getElementById("address2").innerHTML = "<b>Address 2:</b> " + window.localStorage.getItem("address");
+      document.getElementById("country").innerHTML = "<b>Country:</b> " + window.localStorage.getItem("country");
+      document.getElementById("state").innerHTML = "<b>State:</b> " + window.localStorage.getItem("state");
+      document.getElementById("zipcode").innerHTML = "<b>Zipcode:</b> " + window.localStorage.getItem("zipcode");
+
+      // load card info
+      document.getElementById("cardName").innerHTML = "<bName On Card:</b> " + window.localStorage.getItem("cardName");
+      document.getElementById("cardNumber").innerHTML = "<b>Credit Card Number:</b> " + window.localStorage.getItem("cardNumber");
+      document.getElementById("expiration").innerHTML = "<b>Expiration Date:</b> " + window.localStorage.getItem("expiration");
+      document.getElementById("cvv").innerHTML = "<b>CVV:</b> " + window.localStorage.getItem("cvv");
+
       function placeOrder(){
         window.location.href="confirmation.html"
       }

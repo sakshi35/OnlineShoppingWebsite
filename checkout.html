@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Checkout</title>
   </head>
   <body>
     <div class="container">
@@ -25,14 +25,14 @@
         <!-- First Name -->
         <div class="col-md-6">
           <label for="firstName" class="form-label">First Name</label>
-          <input id="first_name" type="text" class="form-control" placeholder="John">
+          <input id="firstName" type="text" class="form-control" placeholder="John">
           <div class="invalid-feedback">please enter a first name</div>
         </div>
 
         <!-- Last Name -->
         <div class="col-md-6">
           <label for="lastName" class="form-label">Last Name</label>
-          <input id="last_name" type="text" class="form-control" placeholder="Smith">
+          <input id="lastName" type="text" class="form-control" placeholder="Smith">
           <div class="invalid-feedback">please enter a last name</div>
         </div>
       </div>
@@ -115,10 +115,10 @@
           <div class="invalid-feedback">please enter a valid date</div>
         </div>
 
-        <!-- Credit Card Number -->
+        <!-- CVV -->
         <div class="col-md-6">
-          <label for="cardNumber" class="form-label">CVV</label>
-          <input id="cardNumber" type="text" class="form-control" placeholder="123">
+          <label for="cvv" class="form-label">CVV</label>
+          <input id="cvv" type="text" class="form-control" placeholder="123">
           <div class="invalid-feedback">please enter credit card nuber</div>
         </div>
       </div>
@@ -138,9 +138,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
       function checkout(){
-        window.localStorage.setItem("firstName", "John");
-        window.localStorage.setItem("lastName", "Smith");
-        
+        // shipping info
+        window.localStorage.setItem("name", document.getElementById("firstName").value + document.getElementById("lastName").value);
+        window.localStorage.setItem("address", document.getElementById("address").value);
+        window.localStorage.setItem("address2", document.getElementById("address2").value);
+        window.localStorage.setItem("country", document.getElementById("country").value);
+        window.localStorage.setItem("state", document.getElementById("state").value);
+        window.localStorage.setItem("zipcode", document.getElementById("zipcode").value);
+
+        // payment info
+        window.localStorage.setItem("cardName", document.getElementById("cardName").value);
+        window.localStorage.setItem("cardNumber", document.getElementById("cardNumber").value);
+        window.localStorage.setItem("expiration", document.getElementById("expiration").value);
+        window.localStorage.setItem("cvv", document.getElementById("cvv").value);
+
         window.location.href = "review.html"; // go to the next page
       } 
    
