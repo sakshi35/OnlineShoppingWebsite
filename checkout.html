@@ -26,7 +26,7 @@
         <div class="col-md-6">
           <label for="firstName" class="form-label">First Name</label>
           <input id="firstName" type="text" class="form-control" placeholder="John">
-          <div class="invalid-feedback">please enter a first name</div>
+          <div class="invalid-feedback ">please enter a first name</div>
         </div>
 
         <!-- Last Name -->
@@ -138,19 +138,75 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
       function checkout(){
-        // shipping info
-        window.localStorage.setItem("name", document.getElementById("firstName").value + document.getElementById("lastName").value);
-        window.localStorage.setItem("address", document.getElementById("address").value);
+        let firstName = document.getElementById("firstName").value;
+        let lastName = document.getElementById("lastName").value;
+        let address = document.getElementById("address").value;
+        let zipcode = document.getElementById("zipcode").value;
+        let cardName = document.getElementById("cardName").value;
+        let cardNumber = document.getElementById("cardNumber").value;
+        let expiration = document.getElementById("expiration").value;
+        let cvv = document.getElementById("cvv").value;
+
+        // input check
+        let passCheck = true;
+        if (firstName === ""){
+          document.getElementById("firstName").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (lastName === ""){
+          document.getElementById("lastName").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (address === ""){
+          document.getElementById("address").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (zipcode === ""){
+          document.getElementById("zipcode").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (cardName === ""){
+          document.getElementById("cardName").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (cardNumber === ""){
+          document.getElementById("cardNumber").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (expiration === ""){
+          document.getElementById("expiration").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (cvv === ""){
+          document.getElementById("cvv").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        // return if check fails
+        if (!passCheck){
+          return;
+        }
+
+        // put shipping info into local storage
+        window.localStorage.setItem("name", firstName + lastName);
+        window.localStorage.setItem("address", address);
         window.localStorage.setItem("address2", document.getElementById("address2").value);
         window.localStorage.setItem("country", document.getElementById("country").value);
         window.localStorage.setItem("state", document.getElementById("state").value);
-        window.localStorage.setItem("zipcode", document.getElementById("zipcode").value);
+        window.localStorage.setItem("zipcode", zipcode);
 
-        // payment info
-        window.localStorage.setItem("cardName", document.getElementById("cardName").value);
-        window.localStorage.setItem("cardNumber", document.getElementById("cardNumber").value);
-        window.localStorage.setItem("expiration", document.getElementById("expiration").value);
-        window.localStorage.setItem("cvv", document.getElementById("cvv").value);
+        // payment info into local storage 
+        window.localStorage.setItem("cardName", cardName);
+        window.localStorage.setItem("cardNumber", cardNumber);
+        window.localStorage.setItem("expiration", expiration);
+        window.localStorage.setItem("cvv", cvv);
 
         window.location.href = "review.html"; // go to the next page
       } 
