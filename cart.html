@@ -111,7 +111,7 @@
     {
         var value = parseInt(document.getElementById(itemid+"val").value, 10);
         value = isNaN(value) ? 0 : value;
-        cart[itemid] = cart[itemid] + 1;
+        cart[itemid] = cart[itemid] - 1;
         totalQuantity = totalQuantity - 1;
         document.getElementById(itemid+"val").value = cart[itemid];
         totalAmount = totalAmount - parseFloat(catalog[itemid].price);
