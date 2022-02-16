@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Review Order</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="py-5 text-center">
+        <h1>Review Your Order</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row" justify-content="center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header text-center">
+              <h4>Shipping Address</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" id="name"><b>Name:</b> John Smith</li>
+              <li class="list-group-item" id="address"><b>Address:</b> Main Street 123</li>
+              <li class="list-group-item" id="address2"><b>Address 2:</b></li>
+              <li class="list-group-item" id="country"><b>Country:</b> United States</li>
+              <li class="list-group-item" id="state"><b>State:</b> Virginia</li>
+              <li class="list-group-item" id="zipcode"><b>Zipcode:</b> 12345</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header text-center">
+              <h4>Payment Information</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item" id="cardName"><b>Name On Card:</b> John Smith</li>
+              <li class="list-group-item" id="cardNumber"><b>Credit Card Number:</b> 1234 1234 1234 1234</li>
+              <li class="list-group-item" id="expiration"><b>Expiration Date:</b> 12/08/20</li>
+              <li class="list-group-item" id="cvv"><b>CVV:</b> 111</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row py-5" justify-content="center">
+        <div class="col-md-12">
+          <button class="w-100 btn btn-primary btn-lg" type="submit" onclick="placeOrder()">Place Order</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+      // load shipping info 
+      document.getElementById("name").innerHTML = "<b>Name:</b> " + window.localStorage.getItem("name");
+      document.getElementById("address").innerHTML = "<b>Address:</b> " + window.localStorage.getItem("address");
+      document.getElementById("address2").innerHTML = "<b>Address 2:</b> " + window.localStorage.getItem("address");
+      document.getElementById("country").innerHTML = "<b>Country:</b> " + window.localStorage.getItem("country");
+      document.getElementById("state").innerHTML = "<b>State:</b> " + window.localStorage.getItem("state");
+      document.getElementById("zipcode").innerHTML = "<b>Zipcode:</b> " + window.localStorage.getItem("zipcode");
+
+      // load card info
+      document.getElementById("cardName").innerHTML = "<bName On Card:</b> " + window.localStorage.getItem("cardName");
+      document.getElementById("cardNumber").innerHTML = "<b>Credit Card Number:</b> " + window.localStorage.getItem("cardNumber");
+      document.getElementById("expiration").innerHTML = "<b>Expiration Date:</b> " + window.localStorage.getItem("expiration");
+      document.getElementById("cvv").innerHTML = "<b>CVV:</b> " + window.localStorage.getItem("cvv");
+
+      function placeOrder(){
+        window.location.href="confirmation.html"
+      }
+    </script>
+  </body>
+</html>

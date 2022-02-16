@@ -1,0 +1,138 @@
+body {
+    display: flex;
+    background: #C0C0C0;
+    min-height: 50vh;
+    vertical-align: middle;
+    font-family: sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold
+}
+
+.title {
+    margin-bottom: 4vh
+}
+
+.card {
+    border-radius: 2rem;
+    border: transparent;
+    margin: auto;
+    max-width: 950px;
+    width: 90%
+}
+
+.cart {
+    background-color: #fff;
+    padding: 5vh 7vh;
+    border-bottom-left-radius: 2rem;
+    border-top-left-radius: 2rem
+}
+
+.summary {
+    background-color: #dcdcdc;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 4vh
+}
+
+.summary .col-2 {
+    padding: 0
+}
+
+.summary .col-10 {
+    padding: 0
+}
+
+.row {
+    margin: 0
+}
+
+.title b {
+    font-size: 1.5rem
+}
+
+.main {
+    margin: 0;
+    padding: 2vh 0;
+    width: 100%
+}
+
+.col-2,
+.col {
+    padding: 0 1vh
+}
+
+a {
+    padding: 0 1vh
+}
+
+.close {
+    margin-left: auto;
+    font-size: 0.7rem
+}
+
+img {
+    width: 3.5rem
+}
+
+.back-to-shop {
+    margin-top: 4.5rem
+}
+
+form {
+    padding: 2vh 0
+}
+
+select {
+    padding: 1.5vh 1vh;
+    margin-bottom: 4vh;
+    width: 100%;
+    border: 2px solid #dcdcdc
+}
+
+input {
+    border: 3px solid #dcdcdc;
+    padding: 1vh;
+    margin-bottom: 3vh;
+    outline: none;
+    width: 100%;
+    background-color: #fff
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+.btn {
+    background-color: #000;
+    border: 3px solid #dcdcdc;
+    color: white;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-top: 4vh;
+    padding: 1vh;
+    border-radius: 25px
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    -webkit-user-select: none;
+    transition: none
+}
+
+.btn:hover {
+    color: white;
+    box-shadow: 3px 5px #888888
+}
+
+a {
+    color: black
+}
+
+a:hover {
+    color: black;
+    font-size: 15px;
+    text-decoration: none
+}

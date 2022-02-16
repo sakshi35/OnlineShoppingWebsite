@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Checkout</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="py-5 text-center">
+        <h1>Check Out</h1>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <h2 class="mb-3">Shipping Address</h2>
+
+      <div class="row form-group">
+        <!-- First Name -->
+        <div class="col-md-6">
+          <label for="firstName" class="form-label">First Name</label>
+          <input id="firstName" type="text" class="form-control" placeholder="John">
+          <div class="invalid-feedback ">please enter a first name</div>
+        </div>
+
+        <!-- Last Name -->
+        <div class="col-md-6">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input id="lastName" type="text" class="form-control" placeholder="Smith">
+          <div class="invalid-feedback">please enter a last name</div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <!-- Address -->
+        <div class="col-md-12">
+          <label for="address" class="form-label">Address</label>
+          <input id="address" type="text" class="form-control" placeholder="1234 Main Street">
+          <div class="invalid-feedback">please enter a last name</div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <!-- Address 2 -->
+        <div class="col-md-12">
+          <label for="address2" class="form-label">Address 2 (Optional)</label>
+          <input id="address2" type="text" class="form-control" placeholder="Apartment or Suite">
+          <div class="invalid-feedback">please enter a last name</div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <!-- Country -->
+        <div class="col-md-5">
+          <label for="country" class="form-label">Country</label>
+          <select id="country" class="form-control">
+            <option value="United States">United States</option>
+          </select>
+        </div>
+
+        <!-- State -->
+        <div class="col-md-4">
+          <label for="state" class="form-label">State</label>
+          <select id="state" class="form-control">
+            <option value="Virginia">Virginia</option>
+          </select>
+        </div>
+
+        <!-- Zipcode -->
+        <div class="col-md-3">
+          <label for="zipcode" class="form-label">Zipcode</label>
+          <input id="zipcode" type="number" class="form-control" placeholder="12345" maxlength="5">
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-md-12"> 
+          <hr> 
+        </div>
+      </div>
+        
+      <div class="row form-group">
+        <div class="col-md-12"> 
+          <h4>Payment</h4> 
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <!-- Name On Card -->
+        <div class="col-md-6">
+          <label for="cardName" class="form-label">Name On Card</label>
+          <input id="cardName" type="text" class="form-control" placeholder="John Smith">
+          <div class="invalid-feedback">please enter name on credit card</div>
+        </div>
+
+        <!-- Credit Card Number -->
+        <div class="col-md-6">
+          <label for="cardNumber" class="form-label">Credit Card Number</label>
+          <input id="cardNumber" type="text" class="form-control" placeholder="123456">
+          <div class="invalid-feedback">please enter credit card nuber</div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <!-- Expiration Date -->
+        <div class="col-md-6">
+          <label for="expiration" class="form-label">Expiration Date</label>
+          <input id="expiration" type="date" class="form-control" placeholder="">
+          <div class="invalid-feedback">please enter a valid date</div>
+        </div>
+
+        <!-- CVV -->
+        <div class="col-md-6">
+          <label for="cvv" class="form-label">CVV</label>
+          <input id="cvv" type="text" class="form-control" placeholder="123">
+          <div class="invalid-feedback">please enter credit card nuber</div>
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-md-12 py-2">
+          <button class="w-100 btn btn-primary btn-lg" type="submit" onclick="checkout()">Continue</button>
+        </div>
+       </div>
+
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+      function checkout(){
+        let firstName = document.getElementById("firstName").value;
+        let lastName = document.getElementById("lastName").value;
+        let address = document.getElementById("address").value;
+        let zipcode = document.getElementById("zipcode").value;
+        let cardName = document.getElementById("cardName").value;
+        let cardNumber = document.getElementById("cardNumber").value;
+        let expiration = document.getElementById("expiration").value;
+        let cvv = document.getElementById("cvv").value;
+
+        // input check
+        let passCheck = true;
+        if (firstName === ""){
+          document.getElementById("firstName").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (lastName === ""){
+          document.getElementById("lastName").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (address === ""){
+          document.getElementById("address").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (zipcode === ""){
+          document.getElementById("zipcode").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (cardName === ""){
+          document.getElementById("cardName").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (cardNumber === ""){
+          document.getElementById("cardNumber").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (expiration === ""){
+          document.getElementById("expiration").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        if (cvv === ""){
+          document.getElementById("cvv").classList.add("is-invalid");
+          passCheck = false;
+        }
+
+        // return if check fails
+        if (!passCheck){
+          return;
+        }
+
+        // put shipping info into local storage
+        window.localStorage.setItem("name", firstName + lastName);
+        window.localStorage.setItem("address", address);
+        window.localStorage.setItem("address2", document.getElementById("address2").value);
+        window.localStorage.setItem("country", document.getElementById("country").value);
+        window.localStorage.setItem("state", document.getElementById("state").value);
+        window.localStorage.setItem("zipcode", zipcode);
+
+        // payment info into local storage 
+        window.localStorage.setItem("cardName", cardName);
+        window.localStorage.setItem("cardNumber", cardNumber);
+        window.localStorage.setItem("expiration", expiration);
+        window.localStorage.setItem("cvv", cvv);
+
+        window.location.href = "review.html"; // go to the next page
+      } 
+   
+    </script>
+  </body>
+</html>
