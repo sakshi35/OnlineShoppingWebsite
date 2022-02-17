@@ -41,23 +41,16 @@
 
 
   <!-- Load the Catalog -->
- <script src ="catalog.js"></script>
+  <script src ="catalog.js"></script>
+ <script src ="shoppingcart.js"></script>
 
   <script>
 
-    // setter method for the category header
-    function setHeader(category){
-      document.getElementById("category_header").innerHTML = category[0].toUpperCase() + category.substring(1);
-    }
-
-    // shopping cart made of ID and Quantity Pairs
-    var cart = JSON.parse(window.localStorage.getItem("cart"));
-    console.log(cart);
-
-    // check for query string
-    var current_category = window.location.href.split('=').pop();
     var totalQuantity = 0;
     var totalAmount = 0;
+
+    loadCart(cart);
+
     function loadCart(cart){
       console.log("cart in fn: "+cart);
       // loop through the array of product IDs in the cart
@@ -67,7 +60,8 @@
         totalAmount = totalAmount + cart[id]*parseFloat(catalog[id].price);
         // use the IDs for identifying the field values
         var valid = id + "val";
-        let card = `<div class="row border-top">
+        let row_id = "row_" + id;
+        let card = `<div class="row border-top" id="${row_id}">
             <div class="row main align-items-center">
                 <div class="col-2"><img id="item" src="${catalog[id].image}" style="width:100%"></div>
                 <div class="col">
@@ -75,7 +69,7 @@
                     <div class="row">${catalog[id].short_description}</div>
                 </div>
                 <div class="col"> <a href="#" id=${id} onclick="decrementValue(this.id)">-</a><input type="text" name="quantity" value="${cart[id]}" maxlength="2" max="10" size="1" id=${valid} /><a href="#" id=${id} onclick="incrementValue(this.id)">+</a> </div>
-                <div class="col">$${catalog[id].price} <span class="close">&#10005;</span></div>
+                <div class="col">$${catalog[id].price} <span class="close" onclick="removeItem(${id})">&#10005;</span></div>
             </div>
         </div>`
         document.getElementById("products_in_cart").innerHTML += card;
@@ -87,17 +81,13 @@
       console.log("totalQuantity: "+totalQuantity);
     }
 
-
-    loadCart(cart);
-
-
     function incrementValue(itemid)
     {
-        var value = parseInt(document.getElementById(itemid+"val").value, 10);
+        var value = parseInt(document.getElementById(itemid+"val").value, 10); // quantity of items 
         value = isNaN(value) ? 0 : value;
-        cart[itemid] = cart[itemid] + 1;
-        totalQuantity = totalQuantity + 1;
-        document.getElementById(itemid+"val").value = cart[itemid];
+        addToCart(itemid); // call to increment the number of items in cart + save to local storage
+        totalQuantity++; 
+        document.getElementById(itemid+"val").value = cart[itemid]; // update quantity in textbox
         totalAmount = totalAmount + parseFloat(catalog[itemid].price);
         console.log("cart: "+cart[itemid]);
         console.log("totalAmount: "+totalAmount);
@@ -111,7 +101,10 @@
     {
         var value = parseInt(document.getElementById(itemid+"val").value, 10);
         value = isNaN(value) ? 0 : value;
-        cart[itemid] = cart[itemid] - 1;
+        subtractFromCart(itemid); // call to decrement the number of items in cart + save to local storage 
+        if (!cart.hasOwnProperty(itemid)){ // remove item if quantity drops to 0
+          removeItem(itemid);
+        }
         totalQuantity = totalQuantity - 1;
         document.getElementById(itemid+"val").value = cart[itemid];
         totalAmount = totalAmount - parseFloat(catalog[itemid].price);
@@ -119,22 +112,14 @@
         document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
         document.getElementById("totalAmount").innerHTML="$" + totalAmount;
         document.getElementById("finalAmount").innerHTML="$" + totalAmount + 3;
-        console.log("totalQuantity: "+totalQuantity);
+        console.log("totalQuantity: "+ totalQuantity);
     }
 
-
-    // add item to cart
-    function addToCart(item_ID){
-      // if an item is already in the cart increase quantity by 1
-      if (cart.hasOwnProperty(item_ID)){
-        cart[item_ID] += 1;
-      }
-      else { // add 1 of that item to the cart
-        cart[item_ID] = 1;
-      }
-      window.localStorage.setItem("cart", JSON.stringify(cart));
-      console.log("cart:" + window.localStorage.getItem("cart"));
+    // function removes an item from cart 
+    function removeItem(item_Id){
+      document.getElementById("row_"+item_Id).remove(); // remove from HTML
+      removeFromCart(item_Id); // remove from cart + update local storage 
+      window.location.reload();
     }
-
 
   </script>

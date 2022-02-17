@@ -69,8 +69,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
      <!-- Load the Catalog -->
-    <script src ="catalog.js"></script>
-
+    <script src="catalog.js"></script>
+    <script src="shoppingcart.js"></script>
     <script>
 
       // setter method for the category header
@@ -80,7 +80,6 @@
 
       // called to load a category of product cards into the card deck
       function loadCategory(category_array){
-        console.log(category_array);
 
         // loop through the array of product IDs
         category_array.forEach(id => {
@@ -107,26 +106,8 @@
         });
       }
 
-      // add item to cart
-      function addToCart(item_ID){
-        // if an item is already in the cart increase quantity by 1
-        if (cart.hasOwnProperty(item_ID)){
-          cart[item_ID] += 1;
-        }
-        else { // add 1 of that item to the cart
-          cart[item_ID] = 1;
-        }
-        window.localStorage.setItem("cart", JSON.stringify(cart));
-        console.log("cart:" + window.localStorage.getItem("cart"));
-      }
-
-      // shopping cart made of ID and Quantity Pairs
-      var cart = {};
-
       // check for query string
       var current_category = window.location.href.split('=').pop();
-
-      console.log(current_category);
 
       // load category
       if (category.hasOwnProperty(current_category)){

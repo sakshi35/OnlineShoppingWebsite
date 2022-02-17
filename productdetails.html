@@ -50,7 +50,7 @@
             <p style="font-size:200%;" class="price" id="productPrice">$25.00</p>
             <h4 style="font-size:250%;" style="font-family:verdana">Product Details</h4>
             <p style="font-size:130%;" style="font-family:verdana" id="productDetails">The cotton T-Shirt is made from a substantial fabric builded from 100% cotton. This provides a classy look and comfort with all types of cloth wear. This has a round neck and long shoulders which look perfect. It offers ultimate smoothness with complete package.</p>
-            <p><button>Add to Cart</button></p>
+            <p><button id="addButton">Add to Cart</button></p>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./catalog.js"></script>
-
+    <script src="shoppingcart.js"></script>
     <script>
         // check the product id that the page loaded with 
         var productID = window.location.href.split('=').pop();
@@ -70,7 +70,8 @@
         document.getElementById("productPrice").innerHTML = "$" + catalog[productID].price;
         document.getElementById("productImage").src = catalog[productID].image;
         document.getElementById("productDetails").innerHTML = catalog[productID].long_description;
-        
+
+        document.getElementById("addButton").onclick = function () { addToCart(productID); };
     </script>
     </body>
 </html>
