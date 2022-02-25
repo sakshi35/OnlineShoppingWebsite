@@ -103,7 +103,8 @@
         value = isNaN(value) ? 0 : value;
         subtractFromCart(itemid); // call to decrement the number of items in cart + save to local storage 
         if (!cart.hasOwnProperty(itemid)){ // remove item if quantity drops to 0
-          removeItem(itemid);
+          document.getElementById("row_"+itemid).remove(); // remove from HTML
+          window.location.reload();
         }
         totalQuantity = totalQuantity - 1;
         document.getElementById(itemid+"val").value = cart[itemid];

@@ -35,7 +35,8 @@
           </ul>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="window.location.href='cart.html'">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16"><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/></svg>
-        </button>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" style="color:ghostwhite;" id="bag_count"></span>
+          </button>
         </div>
     </nav>
 
@@ -60,8 +61,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <script src="./catalog.js"></script>
     <script src="shoppingcart.js"></script>
+    <script src="bag.js"></script>
+
     <script>
         // check the product id that the page loaded with 
         var productID = window.location.href.split('=').pop();
@@ -70,8 +74,8 @@
         document.getElementById("productPrice").innerHTML = "$" + catalog[productID].price;
         document.getElementById("productImage").src = catalog[productID].image;
         document.getElementById("productDetails").innerHTML = catalog[productID].long_description;
-
-        document.getElementById("addButton").onclick = function () { addToCart(productID); };
+        document.getElementById("addButton").onclick = function () { addToBag(productID); };
+        updateBagCount();
     </script>
     </body>
 </html>

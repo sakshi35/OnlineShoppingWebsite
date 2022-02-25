@@ -11,37 +11,60 @@ function addToCart(item_ID){
     else { // add 1 of that item to the cart
       cart[item_ID] = 1;
     }
+    cartCount++; // increment cart count 
     // save to local storage 
     window.localStorage.setItem("cart", JSON.stringify(cart));
+    window.localStorage.setItem("cartCount", JSON.stringify(cartCount));
     console.log("cart:" + window.localStorage.getItem("cart"));
 }
 
 // remove 1 of an item from cart 
 function subtractFromCart(item_ID){
   cart[item_ID]--; 
+  cartCount--; // decrement cart count
+
   // delete item from cart if quantity falls to 0
   if (cart[item_ID] === 0){
     delete cart[item_ID];
   }
   // save to local storage 
   window.localStorage.setItem("cart", JSON.stringify(cart));
+  window.localStorage.setItem("cartCount", JSON.stringify(cartCount));
+  console.log("cart:" + window.localStorage.getItem("cartCount"));
 }
 
 // remove all of an item from cart 
 function removeFromCart(item_ID){
+  cartCount -= cart[item_ID];
   delete cart[item_ID];
   // save to local storage 
   window.localStorage.setItem("cart", JSON.stringify(cart));
+  window.localStorage.setItem("cartCount", JSON.stringify(cartCount));
   console.log("cart:" + window.localStorage.getItem("cart"));
+  console.log("cart:" + window.localStorage.getItem("cartCount"));
 }
 
-//window.localStorage.clear();
+// window.localStorage.clear();
 
 // shopping cart made of ID and Quantity Pairs
-var cart = JSON.parse(window.localStorage.getItem("cart")); // try to retrieve cart from local storage
+var cart; 
+var cartCount;
 
 if (window.localStorage.getItem("cart") === null){ // if cart is null, asign an empty cart
   cart = {};
+}
+else{
+  cart = JSON.parse(window.localStorage.getItem("cart")); // try to retrieve cart from local storage
+}
+
+if (window.localStorage.getItem("cartCount") == null){ 
+  cartCount = 0; // if cart count is empty set it to 0
+  for (id in cart){ // if cart is not empty but count is calculate count 
+    cartCount += cart[id];
+  }
+}
+else{
+  cartCount = JSON.parse(window.localStorage.getItem("cartCount")); // try to retrieve cart count from local storage 
 }
 
 console.log(cart)
