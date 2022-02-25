@@ -67,7 +67,7 @@
           <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
               <div class="col">TOTAL PRICE</div>
               <div class="col text-right" id="finalAmount">&dollar; 137.00</div>
-          </div> <button class="btn-cart" onclick="window.location.href='checkout.html'">CHECKOUT</button>
+          </div> <button class="btn-cart" id="checkout_button" onclick="window.location.href='checkout.html'">CHECKOUT</button>
       </div>
     </div>
     </div>
@@ -110,7 +110,7 @@
         }
         totalAmount = Number(totalAmount).toFixed(2);
         let finalAmount = parseFloat(totalAmount) + 3.00;
-        document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
+        document.getElementById("totalCartItems").innerHTML=totalQuantity;
         document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
         document.getElementById("totalAmount").innerHTML="$" + totalAmount;
         if (totalQuantity==0) {
@@ -140,7 +140,7 @@
           let finalAmount = parseFloat(totalAmount) + 3.00;
           console.log("cart: "+cart[itemid]);
           console.log("totalAmount: "+totalAmount);
-          document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
+          document.getElementById("totalCartItems").innerHTML=totalQuantity;
           document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
           document.getElementById("totalAmount").innerHTML="$" + totalAmount;
           document.getElementById("finalAmount").innerHTML="$" + finalAmount;
@@ -162,7 +162,7 @@
           totalAmount = parseFloat(totalAmount) - parseFloat(catalog[itemid].price);
           totalAmount = Number(totalAmount).toFixed(2);
           let finalAmount = parseFloat(totalAmount) + 3.00;
-          document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
+          document.getElementById("totalCartItems").innerHTML=totalQuantity;
           document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
           document.getElementById("totalAmount").innerHTML="$" + totalAmount;
           document.getElementById("finalAmount").innerHTML="$" + finalAmount;
@@ -192,7 +192,7 @@
             totalQuantity = totalQuantity + parseInt(cart[itemid]);
             totalAmount = Number(totalAmount).toFixed(2);
             let finalAmount = parseFloat(totalAmount) + 3.00;
-            document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
+            document.getElementById("totalCartItems").innerHTML=totalQuantity;
             document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
             document.getElementById("totalAmount").innerHTML="$" + totalAmount;
             document.getElementById("finalAmount").innerHTML="$" + finalAmount;
@@ -201,6 +201,19 @@
             //alert("Updated item quantity to: "+itemQuantity);
             updateBagCount();
         }
+      }
+
+      //Disabling the Checkout button on change of the value to 0 in totalCartItems
+      let cartItemsTotal = document.getElementById("totalCartItems");
+      let button = document.getElementById("checkout_button");
+      cartItemsTotal.addEventListener("change", stateHandle());
+      function stateHandle() {
+          if (parseInt(document.getElementById("totalCartItems").innerHTML) == 0) {
+              console.log("disabling button");
+              button.disabled = true; //button remains disabled
+          } else {
+              button.disabled = false; //button is enabled
+          }
       }
 
     </script>
