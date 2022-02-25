@@ -2,125 +2,205 @@
 <head>
   <link rel="stylesheet" href="cart_style.css">
 </head>
-<div class="card">
-  <div class="row">
-    <div class="col-md-8 cart">
-      <div class="title">
-          <div class="row">
-              <div class="col">
-                  <h4><b>Shopping Cart</b></h4>
-              </div>
-              <div class="col align-self-center text-right text-muted" id="totalCartItems"> items</div>
-          </div>
-      </div>
-      <div class="row" id="products_in_cart">
-        <!-- Products in Cart Will Be Loaded In Via JavaScript See Below -->
-      </div>
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      S<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-balloon" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 9.984C10.403 9.506 12 7.48 12 5a4 4 0 0 0-8 0c0 2.48 1.597 4.506 4 4.984ZM13 5c0 2.837-1.789 5.227-4.52 5.901l.244.487a.25.25 0 1 1-.448.224l-.008-.017c.008.11.02.202.037.29.054.27.161.488.419 1.003.288.578.235 1.15.076 1.629-.157.469-.422.867-.588 1.115l-.004.007a.25.25 0 1 1-.416-.278c.168-.252.4-.6.533-1.003.133-.396.163-.824-.049-1.246l-.013-.028c-.24-.48-.38-.758-.448-1.102a3.177 3.177 0 0 1-.052-.45l-.04.08a.25.25 0 1 1-.447-.224l.244-.487C4.789 10.227 3 7.837 3 5a5 5 0 0 1 10 0Zm-6.938-.495a2.003 2.003 0 0 1 1.443-1.443C7.773 2.994 8 2.776 8 2.5c0-.276-.226-.504-.498-.459a3.003 3.003 0 0 0-2.46 2.461c-.046.272.182.498.458.498s.494-.227.562-.495Z"/></svg>mple Sh<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/></svg>p
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" id="home">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item" id="books">
+          <a class="nav-link" href="index.html?category=books"">Books</a>
+        </li>
+        <li class="nav-item" id="clothes">
+          <a class="nav-link" href="index.html?category=clothes">Clothes</a>
+        </li>
+        <li class="nav-item" id="food">
+          <a class="nav-link" href="index.html?category=food"">Food</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="window.location.href='cart.html'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16"><path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/></svg>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" style="color:ghostwhite;" id="bag_count"></span>
+      </button>
     </div>
-    <div class="col-md-4 summary">
-        <div>
-            <h5><b>Summary</b></h5>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col" style="padding-left:0;" id="totalCartItemsSummary"></div>
-            <div class="col text-right" id="totalAmount">&dollar; 132.00</div>
-        </div>
-        <form>
-            <p>SHIPPING</p> <select>
-                <option class="text-muted">Standard-Delivery- &dollar;3.00</option>
-            </select>
-            <p>GIVE CODE</p> <input id="code" placeholder="Enter your code">
-        </form>
-        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-            <div class="col">TOTAL PRICE</div>
-            <div class="col text-right" id="finalAmount">&dollar; 137.00</div>
-        </div> <button class="btn" onclick="window.location.href='checkout.html'">CHECKOUT</button>
-    </div>
-  </div>
-
-
-  <!-- Load the Catalog -->
-  <script src ="catalog.js"></script>
- <script src ="shoppingcart.js"></script>
-
-  <script>
-
-    var totalQuantity = 0;
-    var totalAmount = 0;
-
-    loadCart(cart);
-
-    function loadCart(cart){
-      console.log("cart in fn: "+cart);
-      // loop through the array of product IDs in the cart
-
-      for (var id in cart) {
-        totalQuantity = totalQuantity + cart[id];
-        totalAmount = totalAmount + cart[id]*parseFloat(catalog[id].price);
-        // use the IDs for identifying the field values
-        var valid = id + "val";
-        let row_id = "row_" + id;
-        let card = `<div class="row border-top" id="${row_id}">
-            <div class="row main align-items-center">
-                <div class="col-2"><img id="item" src="${catalog[id].image}" style="width:100%"></div>
+  </nav>
+  <body class="cart_body">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+            <div class="row">
                 <div class="col">
-                    <div class="row text-muted">${catalog[id].name}</div>
-                    <div class="row">${catalog[id].short_description}</div>
+                    <h4><b>Shopping Cart</b></h4>
                 </div>
-                <div class="col"> <a href="#" id=${id} onclick="decrementValue(this.id)">-</a><input type="text" name="quantity" value="${cart[id]}" maxlength="2" max="10" size="1" id=${valid} /><a href="#" id=${id} onclick="incrementValue(this.id)">+</a> </div>
-                <div class="col">$${catalog[id].price} <span class="close" onclick="removeItem(${id})">&#10005;</span></div>
+                <div class="col align-self-center text-right text-muted" id="totalCartItems"> items</div>
             </div>
-        </div>`
-        document.getElementById("products_in_cart").innerHTML += card;
-      }
-      document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
-      document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
-      document.getElementById("totalAmount").innerHTML="$" + totalAmount;
-      document.getElementById("finalAmount").innerHTML="$" + totalAmount + 3;
-      console.log("totalQuantity: "+totalQuantity);
-    }
+        </div>
+        <div class="row" id="products_in_cart">
+          <!-- Products in Cart Will Be Loaded In Via JavaScript See Below -->
+        </div>
+        <div id="empty_cart"></div>
+      </div>
+      <div class="col-md-4 summary">
+          <div>
+              <h5><b>Summary</b></h5>
+          </div>
+          <hr>
+          <div class="row">
+              <div class="col" style="padding-left:0;" id="totalCartItemsSummary"></div>
+              <div class="col text-right" id="totalAmount">&dollar; 132.00</div>
+          </div>
+          <form>
+              <p>SHIPPING</p> <select>
+                  <option class="text-muted">Standard-Delivery- &dollar;3.00</option>
+              </select>
+              <p>GIVE CODE</p> <input id="code" placeholder="Enter your code">
+          </form>
+          <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right" id="finalAmount">&dollar; 137.00</div>
+          </div> <button class="btn-cart" onclick="window.location.href='checkout.html'">CHECKOUT</button>
+      </div>
+    </div>
+    </div>
+    </body>
 
-    function incrementValue(itemid)
-    {
-        var value = parseInt(document.getElementById(itemid+"val").value, 10); // quantity of items 
-        value = isNaN(value) ? 0 : value;
-        addToCart(itemid); // call to increment the number of items in cart + save to local storage
-        totalQuantity++; 
-        document.getElementById(itemid+"val").value = cart[itemid]; // update quantity in textbox
-        totalAmount = totalAmount + parseFloat(catalog[itemid].price);
-        console.log("cart: "+cart[itemid]);
-        console.log("totalAmount: "+totalAmount);
-        document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
-        document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
-        document.getElementById("totalAmount").innerHTML="$" + totalAmount;
-        document.getElementById("finalAmount").innerHTML="$" + totalAmount + 3;
-        console.log("totalQuantity: "+totalQuantity);
-    }
-    function decrementValue(itemid)
-    {
-        var value = parseInt(document.getElementById(itemid+"val").value, 10);
-        value = isNaN(value) ? 0 : value;
-        subtractFromCart(itemid); // call to decrement the number of items in cart + save to local storage 
-        if (!cart.hasOwnProperty(itemid)){ // remove item if quantity drops to 0
-          document.getElementById("row_"+itemid).remove(); // remove from HTML
-          window.location.reload();
+    <!-- Load the Catalog -->
+    <script src ="./catalog.js"></script>
+   <script src ="shoppingcart.js"></script>
+   <script src="bag.js"></script>
+
+    <script>
+
+      var totalQuantity = 0;
+      var totalAmount = 0.00;
+
+      loadCart(cart);
+
+      function loadCart(cart){
+        console.log("cart in fn: "+cart);
+        // loop through the array of product IDs in the cart
+
+        for (var id in cart) {
+          totalQuantity = totalQuantity + parseInt(cart[id]);
+          totalAmount = totalAmount + parseInt(cart[id])*parseFloat(catalog[id].price);
+          // use the IDs for identifying the field values
+          var valid = id + "val";
+          let row_id = "row_" + id;
+          let card = `<div class="row border-top" id="${row_id}">
+              <div class="row main align-items-center">
+                  <div class="col-2"><img id="item" src="${catalog[id].image}" style="width:100%"></div>
+                  <div class="col">
+                      <div class="row text-muted">${catalog[id].name}</div>
+                      <div class="row">${catalog[id].short_description}</div>
+                  </div>
+                  <div class="col"> <button type="button" class="btn-plus-minus" id=${id} onclick="decrementValue(this.id)">-</button><input type="number" min="0" class="item_quantity" name="quantity" value="${cart[id]}" id=${valid} onkeydown="search(this.id, this.value)" oninput="validity.valid||(value='');" /><button type="button" class="btn-plus-minus" id=${id} onclick="incrementValue(this.id)">+</button></div>
+                  <div class="col">$${catalog[id].price} <span class="close" onclick="removeItem(${id})">&#10005;</span></div>
+              </div>
+          </div>`
+          document.getElementById("products_in_cart").innerHTML += card;
         }
-        totalQuantity = totalQuantity - 1;
-        document.getElementById(itemid+"val").value = cart[itemid];
-        totalAmount = totalAmount - parseFloat(catalog[itemid].price);
+        totalAmount = Number(totalAmount).toFixed(2);
+        let finalAmount = parseFloat(totalAmount) + 3.00;
         document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
         document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
         document.getElementById("totalAmount").innerHTML="$" + totalAmount;
-        document.getElementById("finalAmount").innerHTML="$" + totalAmount + 3;
-        console.log("totalQuantity: "+ totalQuantity);
-    }
+        if (totalQuantity==0) {
+          document.getElementById("finalAmount").innerHTML="$0";
+          let card = `<div class="d-flex justify-content-center text-muted">Cart is Empty</div>`
+          document.getElementById("empty_cart").innerHTML += card;
+        }
+        else {
+          document.getElementById("finalAmount").innerHTML="$" + finalAmount;
+        }
+        console.log("totalQuantity: "+totalQuantity);
+        console.log("totalQuantity: "+totalQuantity);
+        console.log("totalAmount: "+ totalAmount);
+        console.log("finalAmount: "+finalAmount);
+      }
+      updateBagCount();
 
-    // function removes an item from cart 
-    function removeItem(item_Id){
-      document.getElementById("row_"+item_Id).remove(); // remove from HTML
-      removeFromCart(item_Id); // remove from cart + update local storage 
-      window.location.reload();
-    }
+      function incrementValue(itemid)
+      {
+          var value = parseInt(document.getElementById(itemid+"val").value, 10); // quantity of items
+          value = isNaN(value) ? 0 : value;
+          addToCart(itemid); // call to increment the number of items in cart + save to local storage
+          totalQuantity++;
+          document.getElementById(itemid+"val").value = cart[itemid]; // update quantity in textbox
+          totalAmount = parseFloat(totalAmount) + parseFloat(catalog[itemid].price);
+          totalAmount = Number(totalAmount).toFixed(2);
+          let finalAmount = parseFloat(totalAmount) + 3.00;
+          console.log("cart: "+cart[itemid]);
+          console.log("totalAmount: "+totalAmount);
+          document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
+          document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
+          document.getElementById("totalAmount").innerHTML="$" + totalAmount;
+          document.getElementById("finalAmount").innerHTML="$" + finalAmount;
+          console.log("totalQuantity: "+totalQuantity);
+          console.log("totalAmount: "+ totalAmount);
+          updateBagCount();
+      }
+      function decrementValue(itemid)
+      {
+          var value = parseInt(document.getElementById(itemid+"val").value, 10);
+          value = isNaN(value) ? 0 : value;
+          subtractFromCart(itemid); // call to decrement the number of items in cart + save to local storage
+          if (!cart.hasOwnProperty(itemid)){ // remove item if quantity drops to 0
+            document.getElementById("row_"+itemid).remove(); // remove from HTML
+            window.location.reload();
+          }
+          totalQuantity = totalQuantity - 1;
+          document.getElementById(itemid+"val").value = cart[itemid];
+          totalAmount = parseFloat(totalAmount) - parseFloat(catalog[itemid].price);
+          totalAmount = Number(totalAmount).toFixed(2);
+          let finalAmount = parseFloat(totalAmount) + 3.00;
+          document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
+          document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
+          document.getElementById("totalAmount").innerHTML="$" + totalAmount;
+          document.getElementById("finalAmount").innerHTML="$" + finalAmount;
+          console.log("totalQuantity: "+ totalQuantity);
+          console.log("totalAmount: "+ totalAmount);
+          updateBagCount();
+      }
 
-  </script>
+      // function removes an item from cart
+      function removeItem(item_Id){
+        document.getElementById("row_"+item_Id).remove(); // remove from HTML
+        removeFromCart(item_Id); // remove from cart + update local storage
+        window.location.reload();
+      }
+
+      function search(itemid, itemQuantity) {
+        if(event.key === 'Enter') {
+            itemid = itemid.split("v");
+            itemid = parseInt(itemid);
+            console.log("parseInt(cart[itemid]): "+parseInt(cart[itemid]));
+            console.log("itemQuantity: "+itemQuantity);
+            itemQuantity = parseInt(itemQuantity);
+            totalQuantity = totalQuantity - parseInt(cart[itemid]);
+            totalAmount = totalAmount - parseInt(cart[itemid])*parseFloat(catalog[itemid].price);
+            updateItemQuantity(itemid, itemQuantity);
+            totalAmount = totalAmount + parseInt(cart[itemid])*parseFloat(catalog[itemid].price);
+            totalQuantity = totalQuantity + parseInt(cart[itemid]);
+            totalAmount = Number(totalAmount).toFixed(2);
+            let finalAmount = parseFloat(totalAmount) + 3.00;
+            document.getElementById("totalCartItems").innerHTML="items " + totalQuantity;
+            document.getElementById("totalCartItemsSummary").innerHTML="ITEMS " + totalQuantity;
+            document.getElementById("totalAmount").innerHTML="$" + totalAmount;
+            document.getElementById("finalAmount").innerHTML="$" + finalAmount;
+            console.log("totalQuantity: "+ totalQuantity);
+            console.log("totalAmount: "+ totalAmount);
+            //alert("Updated item quantity to: "+itemQuantity);
+            updateBagCount();
+        }
+      }
+
+    </script>

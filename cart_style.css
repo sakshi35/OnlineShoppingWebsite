@@ -1,5 +1,4 @@
-body {
-    display: flex;
+.cart_body {
     background: #C0C0C0;
     min-height: 50vh;
     vertical-align: middle;
@@ -17,8 +16,11 @@ body {
     border: transparent;
     margin: auto;
     max-width: 950px;
-    width: 90%
-}
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%
+  }
 
 .cart {
     background-color: #fff;
@@ -61,10 +63,6 @@ body {
     padding: 0 1vh
 }
 
-a {
-    padding: 0 1vh
-}
-
 .close {
     margin-left: auto;
     font-size: 0.7rem
@@ -102,7 +100,28 @@ input:focus::-webkit-input-placeholder {
     color: transparent
 }
 
-.btn {
+.item_quantity{
+  border: 3px solid #dcdcdc;
+  padding: 1vh;
+  margin-bottom: 3vh;
+  outline: none;
+  width: 30%;
+  background-color: #fff
+}
+
+.btn-plus-minus {
+  background-color: #FFFFFF;
+  border: none;
+  width: 20%;
+}
+
+.btn-plus-minus:hover {
+    color: #FFFFFF;
+    background-color: #C0C0C0;
+    border-radius: 25px
+}
+
+.btn-cart {
     background-color: #000;
     border: 3px solid #dcdcdc;
     color: white;
@@ -113,7 +132,7 @@ input:focus::-webkit-input-placeholder {
     border-radius: 25px
 }
 
-.btn:focus {
+.btn-cart:focus {
     outline: none;
     box-shadow: none;
     color: white;
@@ -122,17 +141,13 @@ input:focus::-webkit-input-placeholder {
     transition: none
 }
 
-.btn:hover {
+.btn-cart:hover {
     color: white;
     box-shadow: 3px 5px #888888
 }
 
-a {
-    color: black
-}
-
-a:hover {
-    color: black;
-    font-size: 15px;
-    text-decoration: none
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0
 }
